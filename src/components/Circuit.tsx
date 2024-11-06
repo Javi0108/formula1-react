@@ -4,7 +4,7 @@ import '../style/Circuit.css'
 const Circuit: React.FC = () => {
   return (
     <div id='container'>
-      <img src='circuits/austria.png'/>
+      <img src='circuits/barcelona.avif'/>
     </div>
   );
 };
