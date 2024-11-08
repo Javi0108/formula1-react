@@ -1,4 +1,15 @@
-#container {
-    width: fit-content;
-    height: fit-content;
+#noCircuit {
+    padding-top: 15%;
+    padding-left: 45%;
+    color: rgba(255, 255, 255, 0.255);
+    font-size: x-large;
+}
+
+#circuitContainer {
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
 }

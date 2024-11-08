@@ -1,13 +1,11 @@
-import React from 'react';
-import './style/App.css'
-import Drivers from './components/Drivers.tsx';
-import Circuit from './components/Circuit.tsx';
+import React from "react";
+import Meetings from "./components/Meetings.tsx";
+import "./style/App.css";
 
 const App: React.FC = () => {
   return (
-    <div id='container' style={{ width: '100vw', height: '100vh' }}>
-      <Circuit />
-      <Drivers />
+    <div id="container" style={{ width: "100%", height: "100%" }}>
+      <Meetings />
     </div>
   );
 };

@@ -1,10 +1,17 @@
-body {
+/* body {
     background-image: linear-gradient(to bottom, #0d1031, #181a2d);
 }
 
 #container {
     display: flex;
+    flex-direction: column;
+}
+
+#content {
+    width: 100vw;
+    margin-top: 2.5rem;
+    display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-}
+} */

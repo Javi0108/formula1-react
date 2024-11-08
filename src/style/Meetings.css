@@ -1,0 +1,23 @@
+body {
+    background-image: linear-gradient(to bottom, #0d1031, #181a2d);
+}
+
+#meetingName {
+    width: fit-content;
+    padding-top: 2rem;
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+#meetingContent {
+    text-align: center;
+    padding: 15px;
+    border-radius: 45px;
+}
+
+#meetingContent:hover {
+    background-color: aqua;
+}

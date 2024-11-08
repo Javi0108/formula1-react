@@ -1,10 +1,24 @@
 import React from 'react';
 import '../style/Circuit.css'
 
-const Circuit: React.FC = () => {
+interface CircuitProps {
+  circuit_name: string;
+}
+
+const Circuit: React.FC<CircuitProps> = ({ circuit_name }) => {
+
+  if (!circuit_name) {
+    return (
+        <div id='noCircuit'>
+            No circuit selected
+        </div>
+    );
+  }
+  console.log(circuit_name)
   return (
-    <div id='container'>
-      <img src='circuits/barcelona.avif'/>
+    <div id='circuitContainer'>
+      <h1>Circuit: {circuit_name}</h1>
+      <img src={`circuits/${circuit_name}.webp`} alt='Imagen del circuito' width={1000}/>
     </div>
   );
 };
