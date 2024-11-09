@@ -1,4 +1,4 @@
-#noCircuit {
+#loadingContainer {
     padding-top: 15%;
     padding-left: 45%;
     color: rgba(255, 255, 255, 0.255);
@@ -6,7 +6,6 @@
 }
 
 #circuitContainer {
-    
     display: flex;
     flex-direction: column;
     justify-content: center;

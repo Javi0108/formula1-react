@@ -6,6 +6,7 @@ import "../style/Meetings.css";
 const Meetings: React.FC = () => {
   const [meetings, setMeeting] = useState<Meeting[]>([]);
   const [circuit_name, setCircuitName] = useState("");
+  const [circuit_country, setCircuitCountry] = useState("");
 
   const fetchMeeting = async () => {
     const url = "https://api.openf1.org/v1/meetings?year=2024";
@@ -34,23 +35,45 @@ const Meetings: React.FC = () => {
     fetchData();
   }, []);
 
-  return (
-    <div id="container" style={{ width: "100vw", height: "100vh" }}>
-      <div id="meetingName">
-        {meetings.map((meeting) => (
-          <div
-            key={meeting.circuit_key}
-            id="meetingContent"
-            onClick={() => setCircuitName(meeting.circuit_short_name)}
-          >
-            {meeting.country_name}
-          </div>
-        ))}
+  if (meetings.length <= 0) {
+    return (
+      <div id="meetingLoader" style={{ width: "100vw", height: "100vh" }}>
+        <span className="loader"></span>
       </div>
+    );
+  }
 
-      <div id="circuit">{<Circuit circuit_name={circuit_name} />}</div>
-    </div>
-  );
+  console.log(meetings);
+
+  if (meetings.length > 0) {
+    return (
+      <div id="container" style={{ width: "100vw", height: "100vh" }}>
+        <div id="meetingName">
+          {meetings.map((meeting) => (
+            <div
+              key={meeting.circuit_key}
+              id="meetingContent"
+              onClick={() => {
+                setCircuitName(meeting.circuit_short_name);
+                setCircuitCountry(meeting.country_name);
+              }}
+            >
+              {meeting.circuit_short_name}
+            </div>
+          ))}
+        </div>
+
+        <div id="circuit">
+          {
+            <Circuit
+              circuit_name={circuit_name}
+              circuit_country={circuit_country}
+            />
+          }
+        </div>
+      </div>
+    );
+  }
 };
 
 export default Meetings;
