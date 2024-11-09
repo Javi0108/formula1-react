@@ -2,20 +2,26 @@ import React, { useEffect, useState } from "react";
 import "../style/Drivers.css";
 import { Driver } from "../interface/Driver";
 
-const Drivers: React.FC = () => {
+interface DriverProps {
+  meeting_key: number;
+  session_key: number;
+}
+
+const Drivers: React.FC<DriverProps> = ({ meeting_key, session_key }) => {
   const [drivers, setDrivers] = useState<Driver[]>([]);
+  console.log("PROPS:", meeting_key, session_key);
 
   const fetchDrivers = async () => {
-    const url = "https://api.openf1.org/v1/drivers?session_key=9158";
+    const url = `https://api.openf1.org/v1/drivers?session_key=${session_key}&meeting_key=${meeting_key}`;
     try {
       const response = await fetch(url);
+      console.log("RESPONSE:", response);
 
       if (!response.ok) {
         throw new Error(`Error en la petición: ${response.status}`);
       }
 
       const data = await response.json();
-      console.log(data);
       return data;
     } catch (error) {
       console.error("Hubo un problema con la petición:", error);
@@ -25,12 +31,21 @@ const Drivers: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       const fetchedDrivers = await fetchDrivers();
+      console.log(fetchedDrivers);
       if (fetchedDrivers) {
         setDrivers(fetchedDrivers);
       }
     };
     fetchData();
   }, []);
+
+  console.log("DRIVERS:", drivers);
+
+  if(drivers.length <= 0) {
+    return (
+      <div>Loading...</div>
+    );
+  }
 
   return (
     <div id="driverContainer">
