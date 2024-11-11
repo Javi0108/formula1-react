@@ -6,9 +6,15 @@
 }
 
 #circuitContainer {
+    height: 80vh;
+    margin-bottom: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 2rem;
+}
+
+#circuitName {
+    margin-left: 4%;
 }

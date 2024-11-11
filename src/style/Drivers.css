@@ -1,6 +1,12 @@
-#driverContainer td {
-    font-size: smaller;
+#driverContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#drivers td {
+    /* font-size: smaller; */
     text-align: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.586);
-    padding-left: .5rem;
+    padding: .5rem;
 }

@@ -14,17 +14,22 @@ const Circuit: React.FC<CircuitProps> = ({ circuit_name, circuit_country }) => {
       </div>
     );
   }
-  console.log(circuit_name);
   return (
-    <div id="circuitContainer">
-      <h1>
+    <div>
+      <h1 id="circuitName">
         Circuit: {circuit_name}, {circuit_country}
       </h1>
-      <img
-        src={`circuits/${circuit_name}.webp`}
-        alt="Imagen del circuito"
-        width={1000}
-      />
+      <div id="circuitContainer">
+        <img
+          id="circuitImage"
+          src={`circuits/${circuit_name}.webp`}
+          alt="Imagen del circuito"
+          width={1000}
+        />
+        <div>
+          See more <i className="bi bi-arrow-down"></i>
+        </div>
+      </div>
     </div>
   );
 };

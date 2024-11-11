@@ -37,26 +37,20 @@ const Drivers: React.FC<DriverProps> = ({ meeting_key, session_key }) => {
       }
     };
     fetchData();
-  }, []);
+  }, [meeting_key, session_key]);
 
   console.log("DRIVERS:", drivers);
-
-  if(drivers.length <= 0) {
-    return (
-      <div>Loading...</div>
-    );
-  }
 
   return (
     <div id="driverContainer">
       <table id="drivers">
-        {drivers.map((driver) => (
-          <tr id="driver">
+        {drivers.map((driver, index) => (
+          <tr key={driver.driver_number} id="driver">
             <td>{driver.driver_number}</td>
             <td>
               <img
                 src={driver.headshot_url}
-                width={35}
+                width={40}
               />
             </td>
             <td>{driver.full_name}</td>

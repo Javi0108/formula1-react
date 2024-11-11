@@ -8,8 +8,8 @@ const Meetings: React.FC = () => {
   const [meetings, setMeeting] = useState<Meeting[]>([]);
   const [circuit_name, setCircuitName] = useState("");
   const [circuit_country, setCircuitCountry] = useState("");
-  const [meeting_key, setMeetingKey] = useState(0); // TODO: Arreglar que siempre devuelve 0 al llamar a <Drivers />
-  const [session_key, setSessionKey] = useState(0); // TODO: Arreglar que siempre devuelve 0 al llamar a <Drivers />
+  const [meeting_key, setMeetingKey] = useState(0);
+  const [session_key, setSessionKey] = useState(0);
 
   const fetchMeeting = async () => {
     const url = "https://api.openf1.org/v1/sessions?session_name=Race&year=2024";
@@ -28,7 +28,6 @@ const Meetings: React.FC = () => {
       }
 
       const data = await response.json();
-      console.log("DATA:", data);
       return data;
     } catch (error) {
       console.error("Hubo un problema con la petición:", error);
@@ -37,16 +36,17 @@ const Meetings: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const fetchedDrivers = await fetchMeeting();
-      if (fetchedDrivers) {
-        setMeeting(fetchedDrivers);
-        console.log("MEETINGS:", meetings);
+      const fetchedMeetings = await fetchMeeting();
+      if (fetchedMeetings) {
+        setMeeting(fetchedMeetings);
       }
     };
     fetchData();
   }, []);
 
   if (meetings.length <= 0) {
+    console.log("MEETINGS:", meetings);
+
     return (
       <div id="meetingLoader" style={{ width: "100vw", height: "100vh" }}>
         <span className="loader"></span>
@@ -55,6 +55,8 @@ const Meetings: React.FC = () => {
   }
 
   if (meetings.length > 0) {
+    console.log("MEETINGS:", meetings);
+
     return (
       <div id="container" style={{ height: "100%" }}>
         <div id="meetingName">
@@ -62,11 +64,9 @@ const Meetings: React.FC = () => {
             <div
               key={meeting.circuit_key}
               id="meetingContent"
-              onLoad={() => {
+              onClick={() => {
                 setMeetingKey(meeting.meeting_key);
                 setSessionKey(meeting.session_key);
-              }}
-              onClick={() => {
                 setCircuitName(meeting.circuit_short_name);
                 setCircuitCountry(meeting.country_name);
               }}
@@ -75,7 +75,6 @@ const Meetings: React.FC = () => {
             </div>
           ))}
         </div>
-
         <div id="circuit">
           {
             <Circuit

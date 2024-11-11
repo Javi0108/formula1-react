@@ -1,5 +1,5 @@
 body {
-    background-image: linear-gradient(to bottom, #131747, #2e3256);
+  background-color: #131747;
 }
 
 #meetingLoader {
@@ -49,6 +49,7 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 1rem;
 }
 
