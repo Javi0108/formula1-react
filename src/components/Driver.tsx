@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { DriverInterface } from "../interface/DriverInterface.tsx";
+import { useParams } from "react-router-dom";
 
-interface DriverProps {
-    driver_id: string;
-}
-  
-const Driver: React.FC<DriverProps> = ({ driver_id }) => {
+const Driver: React.FC = () => {
+  const { driverId } = useParams<{ driverId: string }>();
   const [driver, setDriver] = useState<DriverInterface[]>([]);
 
   const fetchMeeting = async () => {
-    const url = `http://api.jolpi.ca/ergast/f1/drivers/${driver_id}`;
+    const url = `http://api.jolpi.ca/ergast/f1/drivers/${driverId}`;
     try {
       const response = await fetch(url, {
         headers: {
@@ -39,11 +37,7 @@ const Driver: React.FC<DriverProps> = ({ driver_id }) => {
     fetchData();
   }, []);
 
-    return (
-      <div id="container" style={{ height: "100%" }}>
-       
-      </div>
-    );
-  }
+  return <div id="container" style={{ height: "100%" }}>{driverId}</div>;
+};
 
 export default Driver;

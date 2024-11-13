@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import "../style/Drivers.css";
+import { Link } from "react-router-dom";
+import "../style/RaceResult.css";
 import { RaceResultInterface } from "../interface/RaceResultInterface";
 
 interface RaceResultsProps {
@@ -7,7 +8,10 @@ interface RaceResultsProps {
   circuit_name: string;
 }
 
-const RaceResults: React.FC<RaceResultsProps> = ({ circuit_id, circuit_name }) => {
+const RaceResults: React.FC<RaceResultsProps> = ({
+  circuit_id,
+  circuit_name,
+}) => {
   const [drivers, setDrivers] = useState<RaceResultInterface[]>([]);
   console.log("PROPS:", circuit_id);
 
@@ -52,7 +56,10 @@ const RaceResults: React.FC<RaceResultsProps> = ({ circuit_id, circuit_name }) =
       <div id="drivers">
         {drivers.map((driver) => (
           <div className="col-6">
-            <div className="card d-flex flex-row align-items-center ps-5">
+            <Link
+              to={`driver/${driver.Driver.driverId}`}
+              className="card d-flex flex-row align-items-center ps-5"
+            >
               {parseInt(driver.position) === 1 ? (
                 <span id="position">{driver.position}</span>
               ) : (
@@ -61,7 +68,10 @@ const RaceResults: React.FC<RaceResultsProps> = ({ circuit_id, circuit_name }) =
                 </span>
               )}
               <div className="card-body d-flex flex-row align-items-center gap-2">
-                <img src={`pilots/${driver.Driver.driverId}.png`} alt={`Imagen de ${driver.Driver.familyName}`} />
+                <img
+                  src={`pilots/${driver.Driver.driverId}.png`}
+                  alt={`Imagen de ${driver.Driver.familyName}`}
+                />
                 <div className="d-flex flex-column align-items-center">
                   <h5 className="card-title ">
                     {driver.Driver.givenName} {driver.Driver.familyName}
@@ -69,7 +79,7 @@ const RaceResults: React.FC<RaceResultsProps> = ({ circuit_id, circuit_name }) =
                   <p className="card-text">{driver.Constructor.name}</p>
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
         ))}
         {/* <div key={driver.position} id="driver">
