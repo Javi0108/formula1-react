@@ -1,24 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { Meeting } from "../interface/Meetings.tsx";
+import { MeetingInterface } from "../interface/MeetingInterface.tsx";
 import Circuit from "./Circuit.tsx";
-import Drivers from "./Drivers.tsx";
+import RaceResults from "./RaceResults.tsx";
 import "../style/Meetings.css";
 
 const Meetings: React.FC = () => {
-  const [meetings, setMeeting] = useState<Meeting[]>([]);
+  const [meetings, setMeeting] = useState<MeetingInterface[]>([]);
+  const [circuit_id, setCircuitId] = useState("");
   const [circuit_name, setCircuitName] = useState("");
   const [circuit_country, setCircuitCountry] = useState("");
-  const [meeting_key, setMeetingKey] = useState(0);
-  const [session_key, setSessionKey] = useState(0);
 
   const fetchMeeting = async () => {
-    const url = "https://api.openf1.org/v1/sessions?session_name=Race&year=2024";
+    const url = "https://api.jolpi.ca/ergast/f1/2024/circuits/";
     try {
       const response = await fetch(url, {
         headers: {
-          "Access-Control-Allow-Headers": "Content-Type",
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PATCH",
           "Content-Type": "application/json",
         },
       });
@@ -28,7 +24,7 @@ const Meetings: React.FC = () => {
       }
 
       const data = await response.json();
-      return data;
+      return data["MRData"]["CircuitTable"]["Circuits"];
     } catch (error) {
       console.error("Hubo un problema con la petición:", error);
     }
@@ -39,14 +35,13 @@ const Meetings: React.FC = () => {
       const fetchedMeetings = await fetchMeeting();
       if (fetchedMeetings) {
         setMeeting(fetchedMeetings);
+        console.log("MEETINGS: ", meetings);
       }
     };
     fetchData();
   }, []);
 
   if (meetings.length <= 0) {
-    console.log("MEETINGS:", meetings);
-
     return (
       <div id="meetingLoader" style={{ width: "100vw", height: "100vh" }}>
         <span className="loader"></span>
@@ -55,38 +50,34 @@ const Meetings: React.FC = () => {
   }
 
   if (meetings.length > 0) {
-    console.log("MEETINGS:", meetings);
-
     return (
       <div id="container" style={{ height: "100%" }}>
         <div id="meetingName">
           {meetings.map((meeting) => (
             <div
-              key={meeting.circuit_key}
+              key={meeting.circuitId}
               id="meetingContent"
               onClick={() => {
-                setMeetingKey(meeting.meeting_key);
-                setSessionKey(meeting.session_key);
-                setCircuitName(meeting.circuit_short_name);
-                setCircuitCountry(meeting.country_name);
+                setCircuitId(meeting.circuitId);
+                setCircuitName(meeting.circuitName);
+                setCircuitCountry(meeting.Location.country);
               }}
             >
-              {meeting.circuit_short_name}
+              {meeting.circuitName}
             </div>
           ))}
         </div>
         <div id="circuit">
-          {
+          {circuit_id && (
             <Circuit
+              circuit_id={circuit_id}
               circuit_name={circuit_name}
               circuit_country={circuit_country}
             />
-          }
+          )}
         </div>
         <div id="drivers">
-          {
-            <Drivers meeting_key={meeting_key} session_key={session_key}/>
-          }
+          {circuit_id && <RaceResults circuit_id={circuit_id} circuit_name={circuit_name} />}
         </div>
       </div>
     );

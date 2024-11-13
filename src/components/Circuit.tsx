@@ -2,12 +2,13 @@ import React from "react";
 import "../style/Circuit.css";
 
 interface CircuitProps {
+  circuit_id: string;
   circuit_name: string;
   circuit_country: string;
 }
 
-const Circuit: React.FC<CircuitProps> = ({ circuit_name, circuit_country }) => {
-  if (!circuit_name) {
+const Circuit: React.FC<CircuitProps> = ({ circuit_id, circuit_name, circuit_country }) => {
+  if (!circuit_id) {
     return (
       <div id="loadingContainer">
         <span>No circuit selected</span>
@@ -15,19 +16,19 @@ const Circuit: React.FC<CircuitProps> = ({ circuit_name, circuit_country }) => {
     );
   }
   return (
-    <div>
-      <h1 id="circuitName">
+    <div id="circuitContainer">
+      <h3 id="sectionTitle">
         Circuit: {circuit_name}, {circuit_country}
-      </h1>
-      <div id="circuitContainer">
+      </h3>
+      <div id="circuitImg">
         <img
           id="circuitImage"
-          src={`circuits/${circuit_name}.webp`}
+          src={`circuits/${circuit_id}.webp`}
           alt="Imagen del circuito"
-          width={1000}
+          width={850}
         />
         <div>
-          See more <i className="bi bi-arrow-down"></i>
+          See the results! <i className="bi bi-arrow-down"></i>
         </div>
       </div>
     </div>

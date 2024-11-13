@@ -55,8 +55,8 @@ body {
 
 #meetingContent {
     text-align: center;
-    padding: 15px;
-    border-radius: 45px;
+    padding: 10px;
+    border-radius: 50px;
 }
 
 #meetingContent:hover {

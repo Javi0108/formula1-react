@@ -1,12 +1,42 @@
 #driverContainer {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
 }
 
-#drivers td {
-    /* font-size: smaller; */
-    text-align: center;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.586);
-    padding: .5rem;
+#driverContainer table {
+    align-self: center;
+}
+
+#drivers {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 15rem;
+    margin-right: 15rem;
+}
+
+.card {
+    margin-top: 2rem;
+    margin-right: 2rem;
+    background-color: #171c55;
+    color: white;
+    border: 0px;
+    transition: border ease 0.1s;
+}
+
+.card:hover {
+    background-color: #4851c6;
+}
+
+#position {
+    width: 100px !important;
+    font-weight: bolder;
+    font-size: xx-large;
+    color: #e2d54e;
+    width: 15px !important;
+    /* background-image: url("../../public/icons/goal-flag.jpg"); */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
