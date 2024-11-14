@@ -11,11 +11,10 @@ if (rootElement) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(
     <React.StrictMode>
-      {/* <Meetings /> */}
       <Router>
         <Routes>
-          <Route path='/' element={<Meetings/>}/>
-          <Route path='driver/:driverId' element={<Driver />} />
+          <Route path='/' index element={<Meetings/>}/>
+          <Route path='/driver/:driverId' element={<Driver />} />
         </Routes>
       </Router>
     </React.StrictMode>

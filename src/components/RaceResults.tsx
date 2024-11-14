@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../style/RaceResult.css";
 import { RaceResultInterface } from "../interface/RaceResultInterface";
+import { fetchResults } from "../service/services.tsx";
 
 interface RaceResultsProps {
   circuit_id: string;
@@ -15,32 +16,9 @@ const RaceResults: React.FC<RaceResultsProps> = ({
   const [drivers, setDrivers] = useState<RaceResultInterface[]>([]);
   console.log("PROPS:", circuit_id);
 
-  const fetchDrivers = async () => {
-    const url = `https://api.jolpi.ca/ergast/f1/2024/circuits/${circuit_id}/results/`;
-    try {
-      const response = await fetch(url, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error(`Error en la petición: ${response.status}`);
-      }
-
-      console.log(response);
-      const data = await response.json();
-      console.log("DATA: ", data["MRData"]["RaceTable"]["Races"][0]["Results"]);
-
-      return data["MRData"]["RaceTable"]["Races"][0]["Results"];
-    } catch (error) {
-      console.error("Hubo un problema con la petición:", error);
-    }
-  };
-
   useEffect(() => {
     const fetchData = async () => {
-      const fetchedDrivers = await fetchDrivers();
+      const fetchedDrivers = await fetchResults(circuit_id);
       if (fetchedDrivers) {
         setDrivers(fetchedDrivers);
       }
@@ -57,7 +35,7 @@ const RaceResults: React.FC<RaceResultsProps> = ({
         {drivers.map((driver) => (
           <div className="col-6">
             <Link
-              to={`driver/${driver.Driver.driverId}`}
+              to={`/driver/${driver.Driver.driverId}`}
               className="card d-flex flex-row align-items-center ps-5"
             >
               {parseInt(driver.position) === 1 ? (

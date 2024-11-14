@@ -1,35 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { MeetingInterface } from "../interface/MeetingInterface.tsx";
+import { fetchMeeting } from "../service/services.tsx";
 import Circuit from "./Circuit.tsx";
 import RaceResults from "./RaceResults.tsx";
 import "../style/Meetings.css";
 
 const Meetings: React.FC = () => {
   const [meetings, setMeeting] = useState<MeetingInterface[]>([]);
-  const [circuit_id, setCircuitId] = useState("");
-  const [circuit_name, setCircuitName] = useState("");
-  const [circuit_country, setCircuitCountry] = useState("");
+  const [circuit_id, setCircuitId] = useState(
+    () => localStorage.getItem("circuit_id") || ""
+  );
+  const [circuit_name, setCircuitName] = useState(
+    () => localStorage.getItem("circuit_name") || ""
+  );
+  const [circuit_country, setCircuitCountry] = useState(
+    () => localStorage.getItem("circuit_country") || ""
+  );
+  const circuitIdRef = useRef(circuit_id);
+  const circuitNameRef = useRef(circuit_name);
+  const circuitCountryRef = useRef(circuit_country);
 
-  const fetchMeeting = async () => {
-    const url = "https://api.jolpi.ca/ergast/f1/2024/circuits/";
-    try {
-      const response = await fetch(url, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error(`Error en la petición: ${response.status}`);
-      }
-
-      const data = await response.json();
-      return data["MRData"]["CircuitTable"]["Circuits"];
-    } catch (error) {
-      console.error("Hubo un problema con la petición:", error);
-    }
-  };
-
+  // Hace una llamada a la api siempre que se recarga la pagina
   useEffect(() => {
     const fetchData = async () => {
       const fetchedMeetings = await fetchMeeting();
@@ -39,6 +30,31 @@ const Meetings: React.FC = () => {
       }
     };
     fetchData();
+  }, []);
+
+  // Guarda en el localStorage las variables
+  useEffect(() => {
+    localStorage.setItem("circuit_id", circuit_id);
+    localStorage.setItem("circuit_name", circuit_name);
+    localStorage.setItem("circuit_country", circuit_country);
+
+    circuitIdRef.current = circuit_id;
+    circuitNameRef.current = circuit_name;
+    circuitCountryRef.current = circuit_country;
+  }, [circuit_id, circuit_name, circuit_country]);
+
+  useEffect(() => {
+    const handleTabClose = () => {
+      localStorage.removeItem("circuit_id");
+      localStorage.removeItem("circuit_name");
+      localStorage.removeItem("circuit_country");
+    };
+
+    window.addEventListener("beforeunload", handleTabClose);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleTabClose);
+    };
   }, []);
 
   if (meetings.length <= 0) {
@@ -68,16 +84,18 @@ const Meetings: React.FC = () => {
           ))}
         </div>
         <div id="circuit">
-          {circuit_id && (
+          {
             <Circuit
               circuit_id={circuit_id}
               circuit_name={circuit_name}
               circuit_country={circuit_country}
             />
-          )}
+          }
         </div>
         <div id="drivers">
-          {circuit_id && <RaceResults circuit_id={circuit_id} circuit_name={circuit_name} />}
+          {circuit_id && (
+            <RaceResults circuit_id={circuit_id} circuit_name={circuit_name} />
+          )}
         </div>
       </div>
     );
