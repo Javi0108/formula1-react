@@ -1,11 +1,12 @@
 export const fetchMeeting = async () => {
-  const url = "/api/ergast/f1/2024/circuits/"; // TODO: Arreglar Proxy Server y la URL
+  const url = "http://api.jolpi.ca/ergast/f1/2024/circuits/"; // TODO: Arreglar Proxy Server y la URL
   try {
     const response = await fetch(url);
 
     if (!response.ok) {
       throw new Error(`Error en la petición: ${response.status}`);
     }
+    console.log(await response.text())
     const data = await response.json();
     return data["MRData"]["CircuitTable"]["Circuits"];
   } catch (error) {
@@ -14,7 +15,7 @@ export const fetchMeeting = async () => {
 };
 
 export const fetchResults = async (circuitId) => {
-  const url = `/api/ergast/f1/2024/circuits/${circuitId}/results/`; // TODO: Arreglar Proxy Server y la URL
+  const url = `http://api.jolpi.ca/ergast/f1/2024/circuits/${circuitId}/results/`; // TODO: Arreglar Proxy Server y la URL
   try {
     const response = await fetch(url);
 
@@ -33,7 +34,7 @@ export const fetchResults = async (circuitId) => {
 };
 
 export const fetchDriver = async (driverId) => {
-    const url = `/api/ergast/f1/drivers/${driverId}`; // TODO: Arreglar Proxy Server y la URL
+    const url = `http://api.jolpi.ca/ergast/f1/drivers/${driverId}`; // TODO: Arreglar Proxy Server y la URL
   
     try {
       const response = await fetch(url);
