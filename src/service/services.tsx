@@ -1,12 +1,11 @@
 export const fetchMeeting = async () => {
-  const url = "http://api.jolpi.ca/ergast/f1/2024/circuits/"; // TODO: Arreglar Proxy Server y la URL
+  const url = "http://localhost:4000/api/ergast/f1/2024/circuits/"; // TODO: Arreglar Proxy Server y la URL
   try {
     const response = await fetch(url);
 
     if (!response.ok) {
       throw new Error(`Error en la petición: ${response.status}`);
     }
-    console.log(await response.text())
     const data = await response.json();
     return data["MRData"]["CircuitTable"]["Circuits"];
   } catch (error) {
@@ -15,7 +14,7 @@ export const fetchMeeting = async () => {
 };
 
 export const fetchResults = async (circuitId) => {
-  const url = `http://api.jolpi.ca/ergast/f1/2024/circuits/${circuitId}/results/`; // TODO: Arreglar Proxy Server y la URL
+  const url = `http://localhost:4000/api/ergast/f1/2024/circuits/${circuitId}/results/`; // TODO: Arreglar Proxy Server y la URL
   try {
     const response = await fetch(url);
 
@@ -23,10 +22,7 @@ export const fetchResults = async (circuitId) => {
       throw new Error(`Error en la petición: ${response.status}`);
     }
 
-    console.log(response);
     const data = await response.json();
-    console.log("DATA: ", data["MRData"]["RaceTable"]["Races"][0]["Results"]);
-
     return data["MRData"]["RaceTable"]["Races"][0]["Results"];
   } catch (error) {
     console.error("Hubo un problema con la petición:", error);
@@ -34,20 +30,17 @@ export const fetchResults = async (circuitId) => {
 };
 
 export const fetchDriver = async (driverId) => {
-    const url = `http://api.jolpi.ca/ergast/f1/drivers/${driverId}`; // TODO: Arreglar Proxy Server y la URL
+    const url = `http://localhost:4000/api/ergast/f1/2024/drivers/${driverId}/driverstandings/`; // TODO: Arreglar Proxy Server y la URL
   
     try {
       const response = await fetch(url);
-  
-      // Check if the response is JSON
+
       const contentType = response.headers.get("content-type");
       if (contentType && contentType.includes("application/json")) {
         const data = await response.json();
-        return data["MRData"]["DriverTable"]["Drivers"];
+        return data["MRData"]["StandingsTable"]["StandingsLists"][0]["DriverStandings"];
       } else {
-        console.error("Received non-JSON response");
-        const text = await response.text(); // Optional: log the HTML response
-        throw new Error(`Unexpected response format: ${text}`);
+        throw new Error(`Unexpected response format: ${response}`);
       }
     } catch (error) {
       console.error("Hubo un problema con la petición:", error);

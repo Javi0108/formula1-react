@@ -1,4 +1,9 @@
 export interface DriverInterface {
+  position: string;
+  positionText: string;
+  points: string;
+  wins: string;
+  Driver: {
     driverId: string;
     permanentNumber: string;
     code: string;
@@ -7,4 +12,13 @@ export interface DriverInterface {
     familyName: string;
     dateOfBirth: string;
     nationality: string;
+  };
+  Constructors: [
+    {
+      constructorId: string;
+      url: string;
+      name: string;
+      nationality: string;
+    }
+  ];
 }

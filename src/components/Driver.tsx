@@ -25,7 +25,7 @@ const Driver: React.FC = () => {
   return (
     <div id="container" style={{ height: "100%" }}>{
       driver.map(driver => (
-        <h1>{driver.givenName} {driver.familyName}</h1>
+        <h1>{driver.Driver.givenName} {driver.Driver.familyName}</h1>
       ))}
     </div>);
 };
