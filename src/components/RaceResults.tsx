@@ -30,7 +30,7 @@ const RaceResults: React.FC<RaceResultsProps> = ({
 
   return (
     <div id="driversContainer">
-      <h4 id="sectionTitle">Results in {circuit_name}</h4>
+      {/* <h4 id="sectionTitle">Results in {circuit_name}</h4> */}
       <div id="drivers">
         {drivers.map((driver) => (
           <div className="col-6">
@@ -54,6 +54,7 @@ const RaceResults: React.FC<RaceResultsProps> = ({
                   <span className="fs-6">
                     {driver.Driver.givenName} {driver.Driver.familyName}
                   </span>
+                  {/* <span style={{ fontSize: "smaller" }}>Best lap: {driver.FastestLap.Time.time}</span> */}
                 </div>
               </div>
             </Link>

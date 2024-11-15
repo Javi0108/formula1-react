@@ -5,8 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   color: white;
-  background-color: #161836;
+  background-color: #082032;
 }
+
+/*#161836*/
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
