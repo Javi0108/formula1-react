@@ -57,9 +57,28 @@ const Meetings: React.FC = () => {
     };
   }, []);
 
+  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedCircuitId = event.target.value;
+
+    if (selectedCircuitId === "0") {
+      setCircuitId("");
+      setCircuitName("");
+      setCircuitCountry("");
+    } else {
+      const selectedMeeting = meetings.find(
+        (meeting) => meeting.circuitId === selectedCircuitId
+      );
+      if (selectedMeeting) {
+        setCircuitId(selectedMeeting.circuitId);
+        setCircuitName(selectedMeeting.circuitName);
+        setCircuitCountry(selectedMeeting.Location.country);
+      }
+    }
+  };
+
   if (meetings.length <= 0) {
     return (
-      <div id="meetingLoader" style={{ width: "100vw", height: "100vh" }}>
+      <div id="meetingLoader" style={{ width: "100%", height: "100%" }}>
         <span className="loader"></span>
       </div>
     );
@@ -67,30 +86,36 @@ const Meetings: React.FC = () => {
 
   if (meetings.length > 0) {
     return (
-      <div id="container" style={{ height: "100%" }}>
-        <div id="meetingName">
-          {meetings.map((meeting) => (
-            <div
-              key={meeting.circuitId}
-              id="meetingContent"
-              onClick={() => {
-                setCircuitId(meeting.circuitId);
-                setCircuitName(meeting.circuitName);
-                setCircuitCountry(meeting.Location.country);
-              }}
-            >
-              {meeting.circuitName}
-            </div>
-          ))}
-        </div>
-        <div id="circuit">
-          {
-            <Circuit
-              circuit_id={circuit_id}
-              circuit_name={circuit_name}
-              circuit_country={circuit_country}
-            />
-          }
+      <div id="container" style={{ width: "100%", height: "100%" }}>
+        <div id="meetingContainer">
+          <select
+            name="meetings"
+            id="meetingName"
+            onChange={handleChange}
+            value={circuit_id}
+          >
+            <option value="0" selected>
+              Select a circuit
+            </option>
+            {meetings.map((meeting) => (
+              <option
+                value={meeting.circuitId}
+                key={meeting.circuitId}
+                id="meetingContent"
+              >
+                {meeting.circuitName} - {meeting.Location.country}
+              </option>
+            ))}
+          </select>
+          <div id="circuit">
+            {
+              <Circuit
+                circuit_id={circuit_id}
+                circuit_name={circuit_name}
+                circuit_country={circuit_country}
+              />
+            }
+          </div>
         </div>
         <div id="drivers">
           {circuit_id && (

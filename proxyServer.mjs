@@ -1,7 +1,6 @@
 import express from "express";
 import cors from "cors";
 import { createProxyMiddleware } from "http-proxy-middleware";
-import fetch from "node-fetch";
 
 const app = express();
 app.use(cors());

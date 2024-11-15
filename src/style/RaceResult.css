@@ -1,37 +1,32 @@
-#driverContainer {
+#driversContainer {
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
-
-#driverContainer table {
-    align-self: center;
+    width: 700px;
 }
 
 #drivers {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin-left: 15rem;
-    margin-right: 15rem;
 }
 
 .card {
     text-decoration: none !important;
-    margin-top: 2rem;
-    margin-right: 2rem;
-    background-color: #171c55;
+    margin-top: .5rem;
+    margin-right: .5rem;
+    background-color: #181a3b;
     color: white;
     border: 0px;
     transition: border ease 0.1s;
 }
 
 .card:hover {
-    background-color: #4851c6;
+    background-color: #161836;
 }
 
 #position {
-    width: 100px !important;
     font-weight: bolder;
     font-size: xx-large;
     color: #e2d54e;

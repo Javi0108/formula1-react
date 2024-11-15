@@ -1,12 +1,6 @@
-body {
-  background-color: #131747;
-}
-
 #meetingLoader {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
 }
 
 .loader {
@@ -42,23 +36,29 @@ body {
     }
   } 
 
+#container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#meetingContainer {
+  margin-left: 1rem;
+  padding-top: 2rem;
+}
+
 #meetingName {
     width: fit-content;
-    padding-top: 2rem;
     margin-left: 1rem;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
+    background-color: transparent;
+    border: 0px;
+    color: white;
+    border-bottom: 1px solid white;
 }
 
-#meetingContent {
-    text-align: center;
-    padding: 10px;
-    border-radius: 50px;
-}
+#meetingName option {
+  color: black;
+  background-color: transparent;
+  text-align: center;
 
-#meetingContent:hover {
-    background-color: rgb(92, 103, 226);
 }

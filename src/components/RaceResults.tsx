@@ -29,8 +29,8 @@ const RaceResults: React.FC<RaceResultsProps> = ({
   console.log("DRIVERS:", drivers);
 
   return (
-    <div id="driverContainer">
-      <h3 id="sectionTitle">Results in {circuit_name}</h3>
+    <div id="driversContainer">
+      <h4 id="sectionTitle">Results in {circuit_name}</h4>
       <div id="drivers">
         {drivers.map((driver) => (
           <div className="col-6">
@@ -45,16 +45,15 @@ const RaceResults: React.FC<RaceResultsProps> = ({
                   {driver.position}
                 </span>
               )}
-              <div className="card-body d-flex flex-row align-items-center gap-2">
+              <div className="card-body d-flex flex-row align-items-center gap-3">
                 <img
-                  src={`pilots/${driver.Driver.driverId}.png`}
-                  alt={`Imagen de ${driver.Driver.familyName}`}
+                  src={`pilots/icons/${driver.Driver.driverId}.png`}
+                  width={40}
                 />
                 <div className="d-flex flex-column align-items-center">
-                  <h5 className="card-title ">
+                  <span className="fs-6">
                     {driver.Driver.givenName} {driver.Driver.familyName}
-                  </h5>
-                  <p className="card-text">{driver.Constructor.name}</p>
+                  </span>
                 </div>
               </div>
             </Link>

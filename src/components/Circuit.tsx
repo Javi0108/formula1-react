@@ -27,9 +27,6 @@ const Circuit: React.FC<CircuitProps> = ({ circuit_id, circuit_name, circuit_cou
           alt="Imagen del circuito"
           width={850}
         />
-        <div>
-          See the results! <i className="bi bi-arrow-down"></i>
-        </div>
       </div>
     </div>
   );
