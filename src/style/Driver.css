@@ -57,8 +57,9 @@
   height: 100vh;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  gap: 10rem;
 }
 
 #titleContainer {

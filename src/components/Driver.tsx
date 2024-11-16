@@ -75,8 +75,16 @@ const Driver: React.FC = () => {
                     <td id="infoDesc">{driver.Constructors[0].name}</td>
                   </tr>
                   <tr>
+                    <td id="infoTitle">Team nacionality</td>
+                    <td id="infoDesc">{driver.Constructors[0].nationality}</td>
+                  </tr>
+                  <tr>
                     <td id="infoTitle">Date of birth</td>
                     <td id="infoDesc">{driver.Driver.dateOfBirth}</td>
+                  </tr>
+                  <tr>
+                    <td id="infoTitle">Nacionality</td>
+                    <td id="infoDesc">{driver.Driver.nationality}</td>
                   </tr>
                   <tr>
                     <td id="infoTitle">Wins this year</td>
