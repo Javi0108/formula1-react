@@ -6,7 +6,7 @@
 }
 
 #circuitContainer {
-    margin-top: 8rem;
+    margin-top: 5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -16,4 +16,27 @@
 #circuitImg {
     margin-bottom: 4rem;
     gap: 5rem;
+}
+
+#circuit img {
+    width: 700px;
+}
+
+@media only screen and (max-width: 1500px) {
+    #sectionTitle {
+        margin-right: 2rem;
+        margin-left: 2rem;
+        font-size: 50px;
+    }
+    
+    #circuitImg {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #circuit img {
+        width: 90%;
+    }
 }

@@ -25,9 +25,9 @@ const Circuit: React.FC<CircuitProps> = ({ circuit_id, circuit_name, circuit_cou
           id="circuitImage"
           src={`circuits/${circuit_id}.webp`}
           alt="Imagen del circuito"
-          width={850}
         />
       </div>
+      <span className="d-block d-lg-none text-center mt-5">See the results</span>
     </div>
   );
 };

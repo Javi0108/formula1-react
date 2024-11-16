@@ -1,6 +1,8 @@
 #meetingLoader {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .loader {
@@ -39,12 +41,17 @@
 #container {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 5rem;
 }
 
 #meetingContainer {
-  margin-left: 1rem;
-  padding-top: 2rem;
+  width: 50vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #meetingName {
@@ -61,4 +68,15 @@
   background-color: transparent;
   text-align: center;
 
+}
+
+@media only screen and (max-width: 1500px) {
+  #container {
+    flex-direction: column;
+  }
+
+  #meetingContainer {
+    width: 100vw;
+    gap: 10rem;
+  }
 }

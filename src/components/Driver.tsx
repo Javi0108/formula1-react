@@ -41,6 +41,7 @@ const Driver: React.FC = () => {
       {driver.map((driver) => (
         <div key={driver.position} id="driversContainer">
           <img
+            id="driverImg"
             src={`http://localhost:3000/pilots/imgs/${driver.Driver.driverId}.webp`}
             alt={`Imagen de ${driver.Driver.familyName}`}
             width={"30%"}
@@ -64,7 +65,7 @@ const Driver: React.FC = () => {
                   </div>
                   <img
                     src={`http://localhost:3000/pilots/helmets/${driver.Driver.driverId}.webp`}
-                    width={160}
+                    width={170}
                   />
                 </div>
               </div>

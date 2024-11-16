@@ -28,41 +28,59 @@ const RaceResults: React.FC<RaceResultsProps> = ({
 
   console.log("DRIVERS:", drivers);
 
-  return (
-    <div id="driverContainer">
-      <h4 id="resultTitleContainer" className="fs-6">RESULTS</h4>
-      <div id="drivers">
-        {drivers.map((driver) => (
-          <div className="col-6">
-            <Link
-              to={`/driver/${driver.Driver.driverId}`}
-              className="card d-flex flex-row align-items-center ps-5"
-            >
-              {parseInt(driver.position) === 1 ? (
-                <span id="position">{driver.position}</span>
-              ) : (
-                <span style={{ fontWeight: "bolder", fontSize: "larger" }}>
-                  {driver.position}
-                </span>
-              )}
-              <div className="card-body d-flex flex-row align-items-center gap-3">
-                <img
-                  src={`pilots/icons/${driver.Driver.driverId}.png`}
-                  width={40}
-                />
-                <div className="d-flex flex-column align-items-center">
-                  <span className="fs-6">
-                    {driver.Driver.givenName} {driver.Driver.familyName}
-                  </span>
-                  <span style={{ fontSize: "smaller", fontWeight: "bold" }}>Points: {driver.points} / {driver.status}</span>
-                </div>
-              </div>
-            </Link>
-          </div>
-        ))}
+  if (drivers.length <= 0) {
+    return (
+      <div className="d-flex flex-row align-items-center" style={{ width: "30vw"}}>
+        <h4 id="resultTitleContainer" className="fs-6">
+          RESULTS
+        </h4>
+        <div id="resultLoader">
+          <span className="loader"></span>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+
+  if (drivers.length > 0) {
+    return (
+      <div id="driverContainer">
+        <h4 id="resultTitleContainer">
+          RESULTS
+        </h4>
+        <div id="drivers">
+          {drivers.map((driver) => (
+            <div className="col-6">
+              <Link
+                to={`/driver/${driver.Driver.driverId}`}
+                className="card"
+              >
+                {parseInt(driver.position) === 1 ? (
+                  <span id="positionFirst">{driver.position}</span>
+                ) : (
+                  <span id="positions">
+                    {driver.position}
+                  </span>
+                )}
+                <div className="card-body">
+                  <img
+                    src={`pilots/icons/${driver.Driver.driverId}.png`}
+                  />
+                  <div className="d-none d-lg-flex flex-column align-items-center justify-content-center">
+                    <span className="fs-6">
+                      {driver.Driver.givenName} {driver.Driver.familyName}
+                    </span>
+                    <span id="driverPoints">
+                      Points: {driver.points} / {driver.status}
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
 };
 
 export default RaceResults;

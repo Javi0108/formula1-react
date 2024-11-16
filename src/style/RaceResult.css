@@ -1,5 +1,45 @@
+#resultLoader {
+  width: 30vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 3px solid #FFF;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+  }
+  .loader::after {
+    content: '';  
+    box-sizing: border-box;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid;
+    border-color: #FF3D00 transparent;
+  }
+  
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  } 
+
 #driverContainer {
-  margin-top: 2rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -8,6 +48,7 @@
 }
 
 #resultTitleContainer {
+  font-size: 1rem;
   writing-mode: vertical-rl;
   text-orientation: upright;
   column-count: 1;
@@ -20,11 +61,16 @@
 }
 
 .card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 1.5rem;
+  height: 60px;
   background-size: contain;
   background-repeat: no-repeat;
   text-decoration: none !important;
-  margin-top: 0.5rem;
-  margin-right: 0.5rem;
+  margin-top: 0.3rem;
+  margin-right: 0.3rem;
   background-color: #2c394b5e;
   color: white;
 }
@@ -41,6 +87,17 @@
   border-image: linear-gradient(to right, #FF4C29 3%, transparent 70%) 1;
 }
 
+.card-body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.card-body img {
+  width: 40px;
+}
+
 @keyframes gradientMove {
   0% {
     background-size: 0% 100%;
@@ -52,7 +109,7 @@
   }
 }
 
-#position {
+#positionFirst {
   font-weight: bolder;
   font-size: xx-large;
   color: #e2d54e;
@@ -60,4 +117,61 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+#positions {
+  font-weight: bolder;
+  font-size: larger;
+}
+
+#driverPoints {
+  font-size: small;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 1500px) {
+  #resultTitleContainer {
+    font-size: 50px;
+    writing-mode: horizontal-tb;
+  }
+
+  #driverContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 800px;
+  }
+
+  #drivers {
+    justify-content: center;
+  }
+
+  .card {
+    height: 200px;
+    gap: 3rem;
+    padding-left: 3rem;
+  }
+
+  .card-body {
+    gap: 2rem;
+  }
+
+  .card-body img {
+    width: 150px;
+  }
+
+  #driverPoints {
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  #positionFirst {
+    font-size: 90px;
+  }
+
+  #positions {
+    font-weight: bolder;
+    font-size: 60px;
+  }
 }

@@ -78,7 +78,7 @@ const Meetings: React.FC = () => {
 
   if (meetings.length <= 0) {
     return (
-      <div id="meetingLoader" style={{ width: "100%", height: "100%" }}>
+      <div id="meetingLoader" style={{ width: "100vw", height: "100vh" }}>
         <span className="loader"></span>
       </div>
     );
@@ -86,7 +86,7 @@ const Meetings: React.FC = () => {
 
   if (meetings.length > 0) {
     return (
-      <div id="container" style={{ width: "100%", height: "100%" }}>
+      <div id="container">
         <div id="meetingContainer">
           <select
             name="meetings"
