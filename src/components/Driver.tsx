@@ -23,7 +23,7 @@ const Driver: React.FC = () => {
     fetchData();
   }, []);
 
-  if(driver.length <= 0) {
+  if (driver.length <= 0) {
     return (
       <div id="driverLoader" style={{ width: "100vw", height: "100vh" }}>
         <span className="loader"></span>
@@ -40,60 +40,59 @@ const Driver: React.FC = () => {
       </Link>
       {driver.map((driver) => (
         <div key={driver.position} id="driversContainer">
-          <div>
-            <div id="titleContainer">
-              <img
-                src={`http://localhost:3000/pilots/imgs/${driver.Driver.driverId}.webp`}
-                alt={`Imagen de ${driver.Driver.familyName}`}
-                width={400}
-              />
-              <div id="titles">
-                <div>
-                  <h1 className="d-flex flex-row align-items-center gap-3 mt-3">
-                    {driver.Driver.permanentNumber}{" "}
-                    <img
-                      src={`http://localhost:3000/flags/${driver.Driver.nationality}.svg`}
-                      width={50}
-                      title={driver.Driver.nationality}
-                    />
-                  </h1>
-                  <h1>
-                    {driver.Driver.givenName} {driver.Driver.familyName}
-                  </h1>
+          <img
+            src={`http://localhost:3000/pilots/imgs/${driver.Driver.driverId}.webp`}
+            alt={`Imagen de ${driver.Driver.familyName}`}
+            width={"30%"}
+          />
+          <div style={{ width: "50vw", height: "50vh" }}>
+            <div className="d-flex flex-row align-items-center gap-5">
+              <div id="titleContainer">
+                <div id="titles">
+                  <div>
+                    <h1 className="d-flex flex-row align-items-center gap-3 mt-3">
+                      {driver.Driver.permanentNumber}{" "}
+                      <img
+                        src={`http://localhost:3000/flags/${driver.Driver.nationality}.svg`}
+                        width={50}
+                        title={driver.Driver.nationality}
+                      />
+                    </h1>
+                    <h1>
+                      {driver.Driver.givenName} {driver.Driver.familyName}
+                    </h1>
+                  </div>
+                  <img
+                    src={`http://localhost:3000/pilots/helmets/${driver.Driver.driverId}.webp`}
+                    width={160}
+                  />
                 </div>
-                <img
-                  src={`http://localhost:3000/pilots/helmets/${driver.Driver.driverId}.webp`}
-                  width={160}
-
-                />
+              </div>
+              <div id="infoContainer">
+                <table id="infoList">
+                  <tr>
+                    <td id="infoTitle">Team</td>
+                    <td id="infoDesc">{driver.Constructors[0].name}</td>
+                  </tr>
+                  <tr>
+                    <td id="infoTitle">Date of birth</td>
+                    <td id="infoDesc">{driver.Driver.dateOfBirth}</td>
+                  </tr>
+                  <tr>
+                    <td id="infoTitle">Wins this year</td>
+                    <td id="infoDesc">{driver.wins}</td>
+                  </tr>
+                  <tr>
+                    <td id="infoTitle">Points</td>
+                    <td id="infoDesc">{driver.points}</td>
+                  </tr>
+                  <tr>
+                    <td id="infoTitle">Position</td>
+                    <td id="infoDesc">{driver.position}º</td>
+                  </tr>
+                </table>
               </div>
             </div>
-            <div id="infoContainer">
-              <table id="infoList">
-                <tr>
-                  <td id="infoTitle">Team</td>
-                  <td id="infoDesc">{driver.Constructors[0].name}</td>
-                </tr>
-                <tr>
-                  <td id="infoTitle">Date of birth</td>
-                  <td id="infoDesc">{driver.Driver.dateOfBirth}</td>
-                </tr>
-                <tr>
-                  <td id="infoTitle">Wins this year</td>
-                  <td id="infoDesc">{driver.wins}</td>
-                </tr>
-                <tr>
-                  <td id="infoTitle">Points</td>
-                  <td id="infoDesc">{driver.points}</td>
-                </tr>
-                <tr>
-                  <td id="infoTitle">Position</td>
-                  <td id="infoDesc">{driver.position}º</td>
-                </tr>
-              </table>
-            </div>
-          </div>
-          <div style={{ width: "50vw", height: "100vh" }}>
             <CarViewer
               modelPath={`http://localhost:3000/3d-Objects/${driver.Constructors[0].constructorId}.glb`}
             />

@@ -19,7 +19,7 @@ const CarModel: React.FC<{ modelPath: string; position?: [number, number, number
 };
 
 const CarViewer: React.FC<{ modelPath: string }> = ({ modelPath }) => (
-  <Canvas camera={{ position: [0, 1, 5.5] }}>
+  <Canvas camera={{ position: [3.5, 0.5, 0] }}>
     <directionalLight position={[0, 0, 0]} intensity={5} />
     <directionalLight position={[10, 0, 0]} intensity={5} />
     <directionalLight position={[-10, 0, 0]} intensity={5} />
