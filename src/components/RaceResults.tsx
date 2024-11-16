@@ -30,7 +30,7 @@ const RaceResults: React.FC<RaceResultsProps> = ({
 
   return (
     <div id="driversContainer">
-      {/* <h4 id="sectionTitle">Results in {circuit_name}</h4> */}
+      <h4 id="titleContainer" className="fs-6">RESULTS</h4>
       <div id="drivers">
         {drivers.map((driver) => (
           <div className="col-6">
@@ -54,34 +54,12 @@ const RaceResults: React.FC<RaceResultsProps> = ({
                   <span className="fs-6">
                     {driver.Driver.givenName} {driver.Driver.familyName}
                   </span>
-                  {/* <span style={{ fontSize: "smaller" }}>Best lap: {driver.FastestLap.Time.time}</span> */}
+                  <span style={{ fontSize: "smaller", fontWeight: "bold" }}>Points: {driver.points} / {driver.status}</span>
                 </div>
               </div>
             </Link>
           </div>
         ))}
-        {/* <div key={driver.position} id="driver">
-            <span >
-              
-            </span>
-            <span>{driver.Driver.permanentNumber}</span>
-            <span>
-              <img src={`pilots/${driver.Driver.driverId}.png`} width={40} />
-            </span>
-            <span>
-              {driver.Driver.givenName} {driver.Driver.familyName}
-            </span>
-            <span>
-              {/* <img
-                src={`flags/${driver.country_code}.svg`}
-                width="40"
-                title={driver.country_code}
-                alt={`Bandera de ${driver.country_code}`}
-              />
-            </span>
-            <span>{driver.Constructor.name}</span>
-          </div> 
-        ))} */}
       </div>
     </div>
   );

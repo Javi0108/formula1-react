@@ -54,6 +54,7 @@ const Driver: React.FC = () => {
                     <img
                       src={`http://localhost:3000/flags/${driver.Driver.nationality}.svg`}
                       width={50}
+                      title={driver.Driver.nationality}
                     />
                   </h1>
                   <h1>
@@ -62,33 +63,34 @@ const Driver: React.FC = () => {
                 </div>
                 <img
                   src={`http://localhost:3000/pilots/helmets/${driver.Driver.driverId}.webp`}
-                  width={128}
+                  width={160}
+
                 />
               </div>
             </div>
             <div id="infoContainer">
-              <ul id="infoList">
-                <li>
-                  <span id="infoTitle">Team</span>
-                  <span id="infoDesc">{driver.Constructors[0].name}</span>
-                </li>
-                <li>
-                  <span id="infoTitle">Date of birth</span>
-                  <span id="infoDesc">{driver.Driver.dateOfBirth}</span>
-                </li>
-                <li>
-                  <span id="infoTitle">Wins</span>
-                  <span id="infoDesc">{driver.wins}</span>
-                </li>
-                <li>
-                  <span id="infoTitle">Points</span>
-                  <span id="infoDesc">{driver.points}</span>
-                </li>
-                <li>
-                  <span id="infoTitle">Position</span>
-                  <span id="infoDesc">{driver.position}º</span>
-                </li>
-              </ul>
+              <table id="infoList">
+                <tr>
+                  <td id="infoTitle">Team</td>
+                  <td id="infoDesc">{driver.Constructors[0].name}</td>
+                </tr>
+                <tr>
+                  <td id="infoTitle">Date of birth</td>
+                  <td id="infoDesc">{driver.Driver.dateOfBirth}</td>
+                </tr>
+                <tr>
+                  <td id="infoTitle">Wins this year</td>
+                  <td id="infoDesc">{driver.wins}</td>
+                </tr>
+                <tr>
+                  <td id="infoTitle">Points</td>
+                  <td id="infoDesc">{driver.points}</td>
+                </tr>
+                <tr>
+                  <td id="infoTitle">Position</td>
+                  <td id="infoDesc">{driver.position}º</td>
+                </tr>
+              </table>
             </div>
           </div>
           <div style={{ width: "50vw", height: "100vh" }}>

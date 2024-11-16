@@ -31,17 +31,17 @@
   );
   background-repeat: no-repeat;
   border: 1px solid;
-  border-radius: 0.375rem;
-  border-image: linear-gradient(to right, #FF4C29, transparent) 1;
-  
+  border-image: linear-gradient(to right, #FF4C29 3%, transparent 70%) 1;
 }
 
 @keyframes gradientMove {
   0% {
     background-size: 0% 100%;
+    border-image-source: linear-gradient(to right, transparent 3%, transparent  70%);
   }
   100% {
     background-size: 100% 100%;
+    border-image-source: linear-gradient(to right, #FF4C29 3%, transparent 70%);
   }
 }
 

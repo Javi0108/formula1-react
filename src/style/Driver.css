@@ -53,7 +53,7 @@
     color: rgb(202, 202, 202);
 }
 
-#driverContainer {
+#driversContainer {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -61,8 +61,9 @@
 }
 
 #titleContainer {
-    display: flex;
-    flex-direction: column;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    column-count: 1;
 }
 
 #titles {
@@ -75,22 +76,11 @@ img {
     border-radius: 2px;
 }
 
-li {
-    list-style: none;
-    font-size: large;
-}
-
-#infoList {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
 #infoTitle {
     font-weight: bolder;
 }
 
 #infoDesc {
     font-weight: 100;
-    margin-left: 15px;
+    padding-left: 35px;
 }
