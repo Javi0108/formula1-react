@@ -29,8 +29,8 @@ const RaceResults: React.FC<RaceResultsProps> = ({
   console.log("DRIVERS:", drivers);
 
   return (
-    <div id="driversContainer">
-      <h4 id="titleContainer" className="fs-6">RESULTS</h4>
+    <div id="driverContainer">
+      <h4 id="resultTitleContainer" className="fs-6">RESULTS</h4>
       <div id="drivers">
         {drivers.map((driver) => (
           <div className="col-6">
