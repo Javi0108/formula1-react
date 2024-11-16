@@ -62,6 +62,17 @@
   gap: 10rem;
 }
 
+#driverImg {
+  width: 30%;
+}
+
+#contentContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 3rem;
+}
+
 #titleContainer {
   display: flex;
   flex-direction: column;
@@ -71,6 +82,14 @@
   width: fit-content;
   display: flex;
   gap: 2rem;
+  margin-top: 1rem;
+}
+
+#mainTitle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
   margin-top: 1rem;
 }
 
@@ -85,4 +104,36 @@ img {
 #infoDesc {
   font-weight: 100;
   padding-left: 35px;
+}
+
+@media only screen and (max-width: 1500px) {
+  #backButton {
+    margin-top: 5rem;
+    margin-left: 5rem;
+    font-size: 100px;
+  }
+
+  #driversContainer {
+    flex-direction: column;
+    justify-content: start;
+    gap: 3rem;
+  }
+
+  #driverImg {
+    width: 100%;
+  }
+
+  #contentContainer {
+    flex-direction: column;
+  }
+
+  #infoTitle {
+    font-size: 25px;
+  }
+  
+  #infoDesc {
+    font-weight: 100;
+    padding-left: 35px;
+  }
+
 }

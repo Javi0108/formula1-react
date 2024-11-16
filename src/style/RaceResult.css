@@ -145,10 +145,12 @@
 
   #drivers {
     justify-content: center;
+    align-items: center;
+    padding-bottom: 3rem;
   }
 
   .card {
-    height: 200px;
+    height: 150px;
     gap: 3rem;
     padding-left: 3rem;
   }
@@ -158,7 +160,7 @@
   }
 
   .card-body img {
-    width: 150px;
+    width: 100px;
   }
 
   #driverPoints {

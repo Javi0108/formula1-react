@@ -44,14 +44,13 @@ const Driver: React.FC = () => {
             id="driverImg"
             src={`http://localhost:3000/pilots/imgs/${driver.Driver.driverId}.webp`}
             alt={`Imagen de ${driver.Driver.familyName}`}
-            width={"30%"}
           />
           <div style={{ width: "50vw", height: "50vh" }}>
-            <div className="d-flex flex-row align-items-center gap-5">
+            <div id="contentContainer">
               <div id="titleContainer">
                 <div id="titles">
                   <div>
-                    <h1 className="d-flex flex-row align-items-center gap-3 mt-3">
+                    <h1 id="mainTitle">
                       {driver.Driver.permanentNumber}{" "}
                       <img
                         src={`http://localhost:3000/flags/${driver.Driver.nationality}.svg`}
@@ -64,6 +63,7 @@ const Driver: React.FC = () => {
                     </h1>
                   </div>
                   <img
+                    id="helmetImg"
                     src={`http://localhost:3000/pilots/helmets/${driver.Driver.driverId}.webp`}
                     width={170}
                   />
