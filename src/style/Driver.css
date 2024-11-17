@@ -107,8 +107,9 @@
   margin-top: 1rem;
 }
 
-#mainTitle img {
+#nacionalityImg {
   border-radius: 2px;
+  width: 10%;
 }
 
 #helmetImg {
