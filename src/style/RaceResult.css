@@ -129,7 +129,7 @@
   font-weight: bold;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 720px) {
   #resultTitleContainer {
     font-size: 50px;
     writing-mode: horizontal-tb;
