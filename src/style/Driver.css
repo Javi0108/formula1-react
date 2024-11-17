@@ -166,10 +166,6 @@
     height: 50vh;
   }
 
-  /* #titles {
-    height: fit-content;
-  } */
-
   #mainTitle {
     font-size: 30px;
   }
@@ -215,5 +211,9 @@
 
   #teamImg {
     width: 25px;
+  }
+
+  #rightContainer {
+    height: 50vh;
   }
 }
