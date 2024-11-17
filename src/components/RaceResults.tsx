@@ -60,7 +60,7 @@ const RaceResults: React.FC<RaceResultsProps> = ({
                 <div className="card-body">
                   <img src={`/pilots/icons/${driver.Driver.driverId}.png`} />
                   <div className="d-flex flex-column">
-                    <div id="cardName">
+                    <div id="cardName" className="d-flex flex-row gap-2">
                       <span className="d-none d-sm-block">
                         {driver.Driver.givenName}
                       </span>
