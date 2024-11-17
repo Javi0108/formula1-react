@@ -129,7 +129,7 @@
   font-weight: bold;
 }
 
-@media (width <= 960px) {
+@media screen and (width <= 960px) {
   #resultTitleContainer {
     font-size: 50px;
     writing-mode: horizontal-tb;
