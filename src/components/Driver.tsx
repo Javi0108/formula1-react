@@ -51,8 +51,8 @@ const Driver: React.FC = () => {
                 <h1 id="mainTitle">
                   {driver.Driver.permanentNumber}{" "}
                   <img
+                    id="nacionalityImg"
                     src={`/flags/${driver.Driver.nationality}.svg`}
-                    width={50}
                     title={driver.Driver.nationality}
                   />
                 </h1>
