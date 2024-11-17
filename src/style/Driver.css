@@ -133,17 +133,12 @@
 
 #infoTitle {
   font-weight: bolder;
+}
 
-  & p {
-    & img {
-      background-color: white;
-      border-radius: 5px;
-    }
-  }
-
-  & #teamImg {
-    width: 40px;
-  }
+#teamImg {
+  background-color: white;
+  border-radius: 5px;
+  width: 40px;
 }
 
 #infoDesc {
