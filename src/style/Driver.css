@@ -176,10 +176,6 @@
     & #nacionalityImg {
       width: 10%;
     }
-
-    & #teamImg {
-      width: 25px;
-    }
   }
 
   #helmetImg {
@@ -204,14 +200,14 @@
 
   #infoList {
     flex-wrap: wrap;
+    padding-top: 0px;
   }
 
   #infoTitle {
     font-size: 13px;
-  }
-  
-  #infoDesc {
-    font-weight: 100;
-  }
 
+    & #teamImg {
+      width: 25px;
+    }
+  }
 }
