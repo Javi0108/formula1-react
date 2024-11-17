@@ -151,8 +151,9 @@
 
 @media (max-width: 500px) {
   #backButton {
+    z-index: 1;
     margin-top: 2rem;
-    margin-left: 1.5rem;
+    margin-left: 1rem;
     font-size: 35px;
   }
 
@@ -214,6 +215,6 @@
   }
 
   #rightContainer {
-    height: 50vh;
+    height: 40vh;
   }
 }
