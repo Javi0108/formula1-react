@@ -129,7 +129,7 @@
   font-weight: bold;
 }
 
-@media (width <= 400px) {
+@media (max-width: 400px) {
   #resultTitleContainer {
     font-size: 50px;
     writing-mode: horizontal-tb;
