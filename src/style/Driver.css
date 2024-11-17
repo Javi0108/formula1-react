@@ -105,10 +105,10 @@
   align-items: center;
   gap: 1rem;
   margin-top: 1rem;
+}
 
-  & img {
-    border-radius: 2px;
-  }
+#mainTitle img {
+  border-radius: 2px;
 }
 
 #helmetImg {
@@ -172,10 +172,10 @@
 
   #mainTitle {
     font-size: 30px;
+  }
 
-    & #nacionalityImg {
-      width: 10%;
-    }
+  #nacionalityImg {
+    width: 10%;
   }
 
   #helmetImg {
