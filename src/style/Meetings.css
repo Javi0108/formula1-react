@@ -69,7 +69,7 @@
   text-align: center;
 }
 
-@media only screen and (max-width: 1500px) {
+@media only screen and (max-width: 500px) {
   #container {
     flex-direction: column;
     gap: 0px;
