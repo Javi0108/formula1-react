@@ -131,7 +131,7 @@
 
 @media (max-width: 500px) {
   #resultTitleContainer {
-    font-size: 50px;
+    font-size: 20px;
     writing-mode: horizontal-tb;
   }
 
@@ -149,18 +149,12 @@
     padding-bottom: 3rem;
   }
 
-  .card {
-    height: 150px;
-    gap: 3rem;
-    padding-left: 3rem;
-  }
-
   .card-body {
     gap: 2rem;
   }
 
   .card-body img {
-    width: 100px;
+    width: 45px;
   }
 
   #driverPoints {
@@ -169,11 +163,11 @@
   }
 
   #positionFirst {
-    font-size: 90px;
+    font-size: 30px;
   }
 
   #positions {
     font-weight: bolder;
-    font-size: 60px;
+    font-size: 15px;
   }
 }
