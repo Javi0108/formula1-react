@@ -59,13 +59,13 @@ const RaceResults: React.FC<RaceResultsProps> = ({
                 )}
                 <div className="card-body">
                   <img src={`/pilots/icons/${driver.Driver.driverId}.png`} />
-                  <div className="d-none d-lg-flex flex-column align-items-center justify-content-center">
+                  <div>
                     <span className="fs-6">
                       {driver.Driver.givenName} {driver.Driver.familyName}
                     </span>
                   </div>
                   <div>
-                    <span id="driverPoints">
+                    <span id="driverPoints" className="d-none d-lg-flex flex-column align-items-center justify-content-center">
                       Points: {driver.points} / {driver.status}
                     </span>
                   </div>
