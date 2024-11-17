@@ -150,7 +150,7 @@
   height: 100vh;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 500px) {
   #backButton {
     margin-top: 5rem;
     margin-left: 5rem;
