@@ -171,6 +171,10 @@
     width: 100%;
   }
 
+  #titles {
+    height: fit-content;
+  }
+
   #mainTitle {
     font-size: 30px;
   }
@@ -206,9 +210,9 @@
 
   #infoTitle {
     font-size: 13px;
+  }
 
-    & #teamImg {
-      width: 25px;
-    }
+  #teamImg {
+    width: 25px;
   }
 }
