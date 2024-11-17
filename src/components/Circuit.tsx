@@ -27,7 +27,6 @@ const Circuit: React.FC<CircuitProps> = ({ circuit_id, circuit_name, circuit_cou
           alt="Imagen del circuito"
         />
       </div>
-      <span className="d-block d-lg-none text-center mt-5">See the results</span>
     </div>
   );
 };

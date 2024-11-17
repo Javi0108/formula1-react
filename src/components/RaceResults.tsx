@@ -45,7 +45,7 @@ const RaceResults: React.FC<RaceResultsProps> = ({
     return (
       <div id="driverContainer">
         <h4 id="resultTitleContainer">
-          RESULTS
+          RESULTS IN 2024
         </h4>
         <div id="drivers">
           {drivers.map((driver) => (

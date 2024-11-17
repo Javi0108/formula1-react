@@ -46,7 +46,7 @@
 }
 
 #meetingContainer {
-  width: 50vw;
+  width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -67,16 +67,16 @@
   color: black;
   background-color: transparent;
   text-align: center;
-
 }
 
 @media only screen and (max-width: 1500px) {
   #container {
     flex-direction: column;
+    gap: 0px;
   }
 
   #meetingContainer {
-    width: 100vw;
-    gap: 10rem;
+    height: fit-content;
+    margin-top: 5rem;
   }
 }
