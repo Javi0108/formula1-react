@@ -137,23 +137,18 @@
 #teamImg {
   background-color: white;
   border-radius: 5px;
-  width: 25px;
+  width: 40px;
 }
 
 #infoDesc {
   font-weight: 100;
 }
 
-/* #rightContainer {
-  width: 100vw;
-  height: 100vh;
-} */
-
 @media (max-width: 500px) {
   #backButton {
     z-index: 1;
     margin-top: 2rem;
-    margin-left: 1rem;
+    margin-left: 0.5rem;
     font-size: 35px;
   }
 
@@ -213,8 +208,4 @@
   #teamImg {
     width: 25px;
   }
-
-  /* #rightContainer {
-    height: 40vh;
-  } */
 }
