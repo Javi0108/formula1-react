@@ -108,11 +108,11 @@ const Driver: React.FC = () => {
             </div>
           </div>
 
-          <div id="rightContainer">
+          {/* <div id="rightContainer"> */}
             <CarViewer
               modelPath={`/3d-Objects/${driver.Constructors[0].constructorId}.glb`}
             />
-          </div>
+          {/* </div> */}
         </div>
       ))}
     </div>
