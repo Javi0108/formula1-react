@@ -150,7 +150,7 @@
   height: 100vh;
 }
 
-@media screen and (width <= 960px) {
+@media (width <= 400px) {
   #backButton {
     margin-top: 5rem;
     margin-left: 5rem;
