@@ -144,10 +144,10 @@
   font-weight: 100;
 }
 
-#rightContainer {
+/* #rightContainer {
   width: 100vw;
   height: 100vh;
-}
+} */
 
 @media (max-width: 500px) {
   #backButton {
@@ -214,7 +214,7 @@
     width: 25px;
   }
 
-  #rightContainer {
+  /* #rightContainer {
     height: 40vh;
-  }
+  } */
 }
