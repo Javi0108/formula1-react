@@ -139,6 +139,10 @@
       border-radius: 5px;
     }
   }
+
+  & #teamImg {
+    width: 40px;
+  }
 }
 
 #infoDesc {
@@ -152,8 +156,8 @@
 
 @media (max-width: 500px) {
   #backButton {
-    margin-top: 5rem;
-    margin-left: 5rem;
+    margin-top: 2rem;
+    margin-left: 2rem;
     font-size: 50px;
   }
 
@@ -167,19 +171,23 @@
   }
 
   #mainTitle {
-    font-size: 40px;
+    font-size: 30px;
 
     & img {
       width: 10%;
     }
+
+    & #teamImg {
+      width: 25px;
+    }
   }
 
   #helmetImg {
-    width: 135px;
+    width: 125px;
   }
 
   #nameTitle {
-    font-size: 40px;
+    font-size: 30px;
   }
 
   #driverImg {

@@ -70,9 +70,9 @@ const Driver: React.FC = () => {
                     Team
                     <p>
                       <img
+                        id="teamImg"
                         src={`/teams/icons/${driver.Constructors[0].constructorId}.webp`}
                         alt={`Escudo de ${driver.Constructors[0].name}`}
-                        width={40}
                       />
                     </p>
                   </span>
