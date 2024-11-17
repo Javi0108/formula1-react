@@ -22,7 +22,7 @@
     width: 700px;
 }
 
-@media only screen and (max-width: 768px) {
+@media (max-width: 768px) {
     #sectionTitle {
         margin-right: 2rem;
         margin-left: 2rem;
