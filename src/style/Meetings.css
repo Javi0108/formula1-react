@@ -41,12 +41,11 @@
 #container {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   gap: 5rem;
 }
 
 #meetingContainer {
-  width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
