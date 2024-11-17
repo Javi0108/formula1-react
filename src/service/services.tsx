@@ -1,5 +1,5 @@
 export const fetchMeeting = async () => {
-  const url = "/api/ergast/f1/2024/circuits/"; // TODO: Arreglar Proxy Server y la URL
+  const url = "/api/2024/circuits/"; // TODO: Arreglar Proxy Server y la URL
   try {
     const response = await fetch(url);
 
@@ -14,7 +14,7 @@ export const fetchMeeting = async () => {
 };
 
 export const fetchResults = async (circuitId) => {
-  const url = `/api/ergast/f1/2024/circuits/${circuitId}/results/`; // TODO: Arreglar Proxy Server y la URL
+  const url = `/api/2024/circuits/${circuitId}/results/`; // TODO: Arreglar Proxy Server y la URL
   try {
     const response = await fetch(url);
 
@@ -30,7 +30,7 @@ export const fetchResults = async (circuitId) => {
 };
 
 export const fetchDriver = async (driverId) => {
-    const url = `/api/ergast/f1/2024/drivers/${driverId}/driverstandings/`; // TODO: Arreglar Proxy Server y la URL
+    const url = `/api/2024/drivers/${driverId}/driverstandings/`; // TODO: Arreglar Proxy Server y la URL
   
     try {
       const response = await fetch(url);
