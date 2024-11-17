@@ -41,8 +41,8 @@
 #container {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  gap: 5rem;
+  justify-content: center;
+  gap: 10rem;
 }
 
 #meetingContainer {
@@ -55,7 +55,6 @@
 
 #meetingName {
     width: fit-content;
-    margin-left: 1rem;
     background-color: transparent;
     border: 0px;
     color: white;
@@ -73,6 +72,10 @@
     flex-direction: column;
     gap: 0px;
   }
+
+  #meetingName {
+    margin-left: 0rem;
+}
 
   #meetingContainer {
     height: fit-content;
