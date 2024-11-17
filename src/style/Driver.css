@@ -1,3 +1,7 @@
+#allDriverContainer {
+  background-color: white;
+}
+
 #driverLoader {
   display: flex;
   flex-direction: row;
@@ -57,32 +61,42 @@
   height: 100vh;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  gap: 10rem;
 }
 
 #driverImg {
-  width: 30%;
+  width: 50%;
 }
 
-#contentContainer {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 3rem;
-}
-
-#titleContainer {
+#titlesContainer {
+  position: relative;
   display: flex;
   flex-direction: column;
 }
 
-#titles {
-  width: fit-content;
+#leftContainer {
+  height: 100%;
+  width: 70%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   display: flex;
-  gap: 2rem;
-  margin-top: 1rem;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: end;
+  align-items: center;
+}
+
+#titles {
+  width: 100%;
+  padding: 1.5rem;
+  background-color: #0820324f;
+  backdrop-filter: blur(5px);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: 1fr;
+  align-items: center;
 }
 
 #mainTitle {
@@ -91,19 +105,49 @@
   align-items: center;
   gap: 1rem;
   margin-top: 1rem;
+
+  & img {
+    border-radius: 2px;
+  }
 }
 
-img {
-  border-radius: 2px;
+#helmetImg {
+  width: 200px;
+  height: fit-content;
+}
+
+#infoList {
+  grid-column: 1/3;
+  padding-top: 1rem;
+  padding-left: 0px;
+  margin: 0;
+  font-size: 17px;
+  text-align: center;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-around;
 }
 
 #infoTitle {
   font-weight: bolder;
+
+  & p {
+    & img {
+      background-color: white;
+      border-radius: 5px;
+    }
+  }
 }
 
 #infoDesc {
   font-weight: 100;
-  padding-left: 35px;
+}
+
+#rightContainer {
+  width: 100vw;
+  height: 100vh;
 }
 
 @media only screen and (max-width: 1500px) {
@@ -116,7 +160,26 @@ img {
   #driversContainer {
     flex-direction: column;
     justify-content: start;
-    gap: 3rem;
+  }
+
+  #leftContainer {
+    width: 100%;
+  }
+
+  #mainTitle {
+    font-size: 75px;
+
+    & img {
+      width: 10%;
+    }
+  }
+
+  #helmetImg {
+    width: 300px;
+  }
+
+  #nameTitle {
+    font-size: 75px;
   }
 
   #driverImg {
@@ -127,13 +190,20 @@ img {
     flex-direction: column;
   }
 
+  #infoContainer {
+    width: 100vw;
+  }
+
+  #infoList {
+    flex-wrap: wrap;
+  }
+
   #infoTitle {
-    font-size: 25px;
+    font-size: 30px;
   }
   
   #infoDesc {
     font-weight: 100;
-    padding-left: 35px;
   }
 
 }
