@@ -32,7 +32,7 @@ const Driver: React.FC = () => {
   }
 
   return (
-    <div style={{ height: "100%" }} id="allDriverContainer">
+    <div style={{ height: "100vh" }} id="allDriverContainer">
       <Link to={"/"}>
         <button id="backButton">
           <i className="bi bi-arrow-left-circle-fill"></i>
