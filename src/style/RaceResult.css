@@ -157,6 +157,10 @@
     width: 45px;
   }
 
+  #cardName {
+    font-size: 14px;
+  }
+
   #driverPoints {
     font-size: 25px;
     font-weight: bold;
