@@ -23,7 +23,7 @@ const Circuit: React.FC<CircuitProps> = ({ circuit_id, circuit_name, circuit_cou
       <div id="circuitImg">
         <img
           id="circuitImage"
-          src={`circuits/${circuit_id}.webp`}
+          src={`/circuits/${circuit_id}.webp`}
           alt="Imagen del circuito"
         />
       </div>

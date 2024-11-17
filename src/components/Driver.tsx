@@ -43,7 +43,7 @@ const Driver: React.FC = () => {
           <div
             id="leftContainer"
             style={{
-              backgroundImage: `url('http://localhost:3000/pilots/imgs/${driver.Driver.driverId}.webp')`,
+              backgroundImage: `url('/pilots/imgs/${driver.Driver.driverId}.webp')`,
             }}
           >
             <div id="titles">
@@ -51,7 +51,7 @@ const Driver: React.FC = () => {
                 <h1 id="mainTitle">
                   {driver.Driver.permanentNumber}{" "}
                   <img
-                    src={`http://localhost:3000/flags/${driver.Driver.nationality}.svg`}
+                    src={`/flags/${driver.Driver.nationality}.svg`}
                     width={50}
                     title={driver.Driver.nationality}
                   />
@@ -62,7 +62,7 @@ const Driver: React.FC = () => {
               </div>
               <img
                 id="helmetImg"
-                src={`http://localhost:3000/pilots/helmets/${driver.Driver.driverId}.webp`}
+                src={`/pilots/helmets/${driver.Driver.driverId}.webp`}
               />
               <ul id="infoList">
                 <li>
@@ -70,7 +70,7 @@ const Driver: React.FC = () => {
                     Team
                     <p>
                       <img
-                        src={`http://localhost:3000/teams/icons/${driver.Constructors[0].constructorId}.webp`}
+                        src={`/teams/icons/${driver.Constructors[0].constructorId}.webp`}
                         alt={`Escudo de ${driver.Constructors[0].name}`}
                         width={40}
                       />
@@ -110,7 +110,7 @@ const Driver: React.FC = () => {
 
           <div id="rightContainer">
             <CarViewer
-              modelPath={`http://localhost:3000/3d-Objects/${driver.Constructors[0].constructorId}.glb`}
+              modelPath={`/3d-Objects/${driver.Constructors[0].constructorId}.glb`}
             />
           </div>
         </div>
