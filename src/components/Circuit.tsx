@@ -8,18 +8,11 @@ interface CircuitProps {
 }
 
 const Circuit: React.FC<CircuitProps> = ({ circuit_id, circuit_name, circuit_country }) => {
-  if (!circuit_id) {
-    return (
-      <div id="loadingContainer">
-        <span>No circuit selected</span>
-      </div>
-    );
-  }
   return (
     <div id="circuitContainer">
-      <h3 id="sectionTitle">
-        Circuit: {circuit_name}, {circuit_country}
-      </h3>
+      <span id="sectionTitle">
+        {circuit_name}, {circuit_country}
+      </span>
       <div id="circuitImg">
         <img
           id="circuitImage"

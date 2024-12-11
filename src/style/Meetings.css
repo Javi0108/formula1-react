@@ -6,42 +6,43 @@
 }
 
 .loader {
-    width: 48px;
-    height: 48px;
-    border: 3px solid #FFF;
-    border-radius: 50%;
-    display: inline-block;
-    position: relative;
-    box-sizing: border-box;
-    animation: rotation 1s linear infinite;
+  width: 48px;
+  height: 48px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.loader::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid;
+  border-color: #ff3d00 transparent;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
   }
-  .loader::after {
-    content: '';  
-    box-sizing: border-box;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 3px solid;
-    border-color: #FF3D00 transparent;
+  100% {
+    transform: rotate(360deg);
   }
-  
-  @keyframes rotation {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  } 
+}
 
 #container {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-end;
+  margin-right: 3rem;
 }
 
 #meetingContainer {
@@ -53,11 +54,15 @@
 }
 
 #meetingName {
-    width: fit-content;
-    background-color: transparent;
-    border: 0px;
-    color: white;
-    border-bottom: 1px solid #FF4C29;
+  position: fixed;
+  z-index: 1;
+  top: 10%;
+  left: 5%;
+  width: fit-content;
+  background-color: transparent;
+  border: 0px;
+  color: white;
+  border-bottom: 1px solid #ff4c29;
 }
 
 #meetingName option {
@@ -69,12 +74,13 @@
 @media (max-width: 500px) {
   #container {
     flex-direction: column;
-    gap: 0px;
+    justify-content: center;
   }
 
   #meetingName {
-    margin-left: 0rem;
-}
+    position: relative;
+    margin-top: 5rem;
+  }
 
   #meetingContainer {
     height: fit-content;
