@@ -158,10 +158,9 @@ const Meetings: React.FC = () => {
         </select>
         <Globe
           ref={globeEl}
-          width={800}
           globeImageUrl="//unpkg.com/three-globe/example/img/earth-dark.jpg"
           onGlobeReady={() =>
-            globeEl.current.pointOfView({ lng: longitude, lat: latitude })
+            globeEl.current.pointOfView({ lng: longitude, lat: latitude, altitude: 1.5 })
           }
           htmlElementsData={gData}
           backgroundColor="#082032"
