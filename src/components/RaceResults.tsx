@@ -28,26 +28,26 @@ const RaceResults: React.FC<RaceResultsProps> = ({
 
   console.log("DRIVERS:", drivers);
 
-  if (drivers.length <= 0) {
-    return (
-      <div
-        className="d-flex flex-row align-items-center"
-        style={{ width: "30vw" }}
-      >
-        <h4 id="resultTitleContainer" className="fs-6">
-          RESULTS
-        </h4>
-        <div id="resultLoader">
-          <span className="loader"></span>
-        </div>
-      </div>
-    );
-  }
+  // if (drivers.length <= 0) {
+  //   return (
+  //     <div
+  //       className="d-flex flex-row align-items-center"
+  //       style={{ width: "30vw" }}
+  //     >
+  //       <h4 id="resultTitleContainer" className="fs-6">
+  //         RESULTS
+  //       </h4>
+  //       <div id="resultLoader">
+  //         <span className="loader"></span>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   if (drivers.length > 0) {
     return (
       <div id="driverContainer">
-        <h4 id="resultTitleContainer">RESULTS IN 2024</h4>
+        {/* <h4 id="resultTitleContainer">RESULTS IN 2024</h4> */}
         <div id="drivers">
           {drivers.map((driver) => (
             <div className="col-6">

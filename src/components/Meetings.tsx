@@ -1,14 +1,15 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { MeetingInterface } from "../interface/MeetingInterface.tsx";
 import { fetchMeeting } from "../service/services.tsx";
 import Circuit from "./Circuit.tsx";
 import RaceResults from "./RaceResults.tsx";
 import Globe from "react-globe.gl";
-
+import * as THREE from "three";
 import "../style/Meetings.css";
 
 const Meetings: React.FC = () => {
   const globeEl = useRef<any>(null);
+  const [globeRadius, setGlobeRadius] = useState();
 
   const [meetings, setMeeting] = useState<MeetingInterface[]>([]);
   const [circuit_id, setCircuitId] = useState(
@@ -25,9 +26,6 @@ const Meetings: React.FC = () => {
   );
   const [longitude, setLongitude] = useState(
     () => localStorage.getItem("longitude") || "0"
-  );
-  const [labelSize, setLabelSize] = useState(
-    () => localStorage.getItem("labelSize") || "15px"
   );
   const circuitIdRef = useRef(circuit_id);
   const circuitNameRef = useRef(circuit_name);
@@ -52,7 +50,6 @@ const Meetings: React.FC = () => {
     localStorage.setItem("circuit_country", circuit_country);
     localStorage.setItem("latitude", latitude);
     localStorage.setItem("longitude", longitude);
-    localStorage.setItem("labelSize", labelSize);
 
     circuitIdRef.current = circuit_id;
     circuitNameRef.current = circuit_name;
@@ -66,7 +63,6 @@ const Meetings: React.FC = () => {
       localStorage.removeItem("circuit_country");
       localStorage.removeItem("latitude");
       localStorage.removeItem("longitude");
-      localStorage.removeItem("labelSize");
     };
 
     window.addEventListener("beforeunload", handleTabClose);
@@ -82,8 +78,13 @@ const Meetings: React.FC = () => {
     }
   };
 
-  const handleChange = (eventOrCircuit: React.ChangeEvent<HTMLSelectElement> | string) => {
-    const selectedCircuitId = typeof eventOrCircuit === "string" ? eventOrCircuit : eventOrCircuit.target.value;
+  const handleChange = (
+    eventOrCircuit: React.ChangeEvent<HTMLSelectElement> | string
+  ) => {
+    const selectedCircuitId =
+      typeof eventOrCircuit === "string"
+        ? eventOrCircuit
+        : eventOrCircuit.target.value;
 
     if (selectedCircuitId === "0") {
       setCircuitId("");
@@ -91,7 +92,6 @@ const Meetings: React.FC = () => {
       setCircuitCountry("");
       setLatitude("");
       setLongitude("");
-      setLabelSize("15px");
     } else {
       const selectedMeeting = meetings.find(
         (meeting) => meeting.circuitId === selectedCircuitId
@@ -102,7 +102,6 @@ const Meetings: React.FC = () => {
         setCircuitCountry(selectedMeeting.Location.country);
         setLatitude(selectedMeeting.Location.lat);
         setLongitude(selectedMeeting.Location.long);
-        setLabelSize("20px");
         handleSelectCircuit(
           selectedMeeting.Location.lat,
           selectedMeeting.Location.long
@@ -111,6 +110,33 @@ const Meetings: React.FC = () => {
     }
   };
 
+  const gData = meetings.map((meeting) => ({
+    lat: meeting.Location.lat,
+    lng: meeting.Location.long,
+    label: meeting.circuitName,
+    circuitId: meeting.circuitId,
+    location: meeting.Location.country,
+    name: meeting.circuitName,
+  }));
+
+  const EARTH_RADIUS_KM = 6371; // km
+  const SAT_SIZE = 80; // km
+
+  const satObject = useMemo(() => {
+    if (!globeRadius) return undefined;
+
+    const satGeometry = new THREE.OctahedronGeometry(
+      SAT_SIZE / EARTH_RADIUS_KM / 2,
+      0
+    );
+    const satMaterial = new THREE.MeshLambertMaterial({
+      color: 0xff0000,
+      transparent: false,
+      opacity: 1,
+    });
+    return new THREE.Mesh(satGeometry, satMaterial);
+  }, [globeRadius]);
+
   if (meetings.length <= 0) {
     return (
       <div id="meetingLoader" style={{ width: "100vw", height: "100vh" }}>
@@ -118,21 +144,6 @@ const Meetings: React.FC = () => {
       </div>
     );
   }
-
-  const markerSvg = `<svg viewBox="-4 0 36 36">
-    <path fill="currentColor" d="M14,0 C21.732,0 28,5.641 28,12.6 C28,23.963 14,36 14,36 C14,36 0,24.064 0,12.6 C0,5.641 6.268,0 14,0 Z"></path>
-    <circle fill="black" cx="14" cy="14" r="7"></circle>
-  </svg>`;
-
-  const gData = meetings.map((meeting) => ({
-    lat: meeting.Location.lat,
-    lng: meeting.Location.long,
-    label: meeting.circuitName,
-    circuitId: meeting.circuitId,
-    location: meeting.Location.country,
-    circuitName: meeting.circuitName,
-  }));
-
 
   if (meetings.length > 0) {
     return (
@@ -156,96 +167,43 @@ const Meetings: React.FC = () => {
             </option>
           ))}
         </select>
-        <Globe
-          ref={globeEl}
-          globeImageUrl="//unpkg.com/three-globe/example/img/earth-dark.jpg"
-          onGlobeReady={() =>
-            globeEl.current.pointOfView({ lng: longitude, lat: latitude, altitude: 1.5 })
-          }
-          htmlElementsData={gData}
-          backgroundColor="#082032"
-          htmlElement={(d) => {
-            const el = document.createElement("div");
-            el.id = "htmlMarker";
-            el.innerHTML = markerSvg;
-            el.style.color = "#2ee7d6";
-            el.style.width = "15px";
-            el.style.transition = "width 200ms";
-            el.title = d.circuitName;
-
-            el.style.pointerEvents = "auto";
-            el.style.cursor = "pointer";
-
-            el.onclick = () =>{
-              el.style.color = "#ff4c29";
-              el.style.width = "30px";
-              handleChange(d.circuitId); 
-              
+        <div>
+          <Globe
+            ref={globeEl}
+            globeImageUrl="//unpkg.com/three-globe/example/img/earth-dark.jpg"
+            onGlobeReady={() =>
+              globeEl.current.pointOfView({
+                lng: longitude,
+                lat: latitude,
+                altitude: 2,
+              })
             }
+            objectsData={gData}
+            objectLabel="name"
+            objectLat="lat"
+            objectLng="lng"
+            objectFacesSurfaces={false}
+            objectThreeObject={satObject}
+            onObjectClick={(obj) => {
+              handleChange(obj.circuitId);
+            }}
+          />
+        </div>
 
-            el.addEventListener("mouseover", () => {
-              el.style.color = "#ff4c29";
-              el.style.width = "30px";
-            });
-
-            el.addEventListener("mouseout", () => {
-              el.style.color = "#2ee7d6";
-              el.style.width = "15px";
-            });
-
-            return el;
-          }}
-          htmlTransitionDuration={1000}
-        />
         <div id="circuit">
-            { circuit_id &&
-              <Circuit
-                circuit_id={circuit_id}
-                circuit_name={circuit_name}
-                circuit_country={circuit_country}
-              />
-            }
-          </div>
+          {circuit_id && (
+            <Circuit
+              circuit_id={circuit_id}
+              circuit_name={circuit_name}
+              circuit_country={circuit_country}
+            />
+          )}
+        </div>
         <div id="drivers">
           {circuit_id && (
             <RaceResults circuit_id={circuit_id} circuit_name={circuit_name} />
           )}
         </div>
-        {/* <div id="meetingContainer">
-          <select
-            name="meetings"
-            id="meetingName"
-            onChange={handleChange}
-            value={circuit_id}
-          >
-            <option value="0" selected>
-              Select a circuit
-            </option>
-            {meetings.map((meeting) => (
-              <option
-                value={meeting.circuitId}
-                key={meeting.circuitId}
-                id="meetingContent"
-              >
-                {meeting.circuitName} - {meeting.Location.country}
-              </option>
-            ))}
-          </select>
-          <div id="circuit">
-            {
-              <Circuit
-                circuit_id={circuit_id}
-                circuit_name={circuit_name}
-                circuit_country={circuit_country}
-              />
-            }
-          </div>
-        </div>
-        <div id="drivers">
-          {circuit_id && (
-            <RaceResults circuit_id={circuit_id} circuit_name={circuit_name} />
-          )}
-        </div> */}
       </div>
     );
   }

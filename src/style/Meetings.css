@@ -44,14 +44,6 @@
   justify-content: center;
 }
 
-#meetingContainer {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 #meetingName {
   position: fixed;
   z-index: 1;
@@ -68,6 +60,12 @@
   color: black;
   background-color: transparent;
   text-align: center;
+}
+
+#drivers {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 @media (max-width: 500px) {
