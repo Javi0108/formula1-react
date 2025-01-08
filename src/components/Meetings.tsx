@@ -184,7 +184,7 @@ const Meetings: React.FC = () => {
             objectLng="lng"
             objectFacesSurfaces={false}
             objectThreeObject={satObject}
-            onObjectClick={(obj) => {
+            onObjectClick={(obj) => { 
               handleChange(obj.circuitId);
             }}
           />
