@@ -38,12 +38,6 @@
   }
 }
 
-#container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
 #meetingName {
   position: fixed;
   z-index: 1;
@@ -60,6 +54,16 @@
   color: black;
   background-color: transparent;
   text-align: center;
+}
+
+canvas {
+  width: 100vw;
+  height: 100vh;
+}
+
+#globe {
+  width: 100vw;
+  height: 100vh;
 }
 
 #drivers {

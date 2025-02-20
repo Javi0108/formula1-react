@@ -167,8 +167,10 @@ const Meetings: React.FC = () => {
             </option>
           ))}
         </select>
-        <div>
+        <div id="globe">
           <Globe
+            width={window.visualViewport?.width}
+            height={window.visualViewport?.height}
             ref={globeEl}
             globeImageUrl="//unpkg.com/three-globe/example/img/earth-dark.jpg"
             onGlobeReady={() =>
@@ -184,7 +186,7 @@ const Meetings: React.FC = () => {
             objectLng="lng"
             objectFacesSurfaces={false}
             objectThreeObject={satObject}
-            onObjectClick={(obj) => { 
+            onObjectClick={(obj: any) => { 
               handleChange(obj.circuitId);
             }}
           />

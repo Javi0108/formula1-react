@@ -41,13 +41,14 @@
 
 #driverContainer {
   position: fixed;
+  top: 4%;
   right: 1%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   align-self: center;
-  width: 650px;
+  width: 36%;
 }
 
 #drivers {
@@ -108,6 +109,10 @@
   font-weight: bolder;
   font-size: xx-large;
   color: #e2d54e;
+  background: linear-gradient(to bottom, #e2d54e 10%, #494514 70%);
+  background-clip: border-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   width: 15px !important;
   background-size: cover;
   background-position: center;
