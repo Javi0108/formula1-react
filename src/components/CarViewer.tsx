@@ -2,7 +2,6 @@ import React, { Suspense, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF, Html } from "@react-three/drei";
 import { Vibrant } from "node-vibrant/browser";
-import { Swatch } from "@vibrant/color";
 
 const Loader: React.FC = () => {
   return (
