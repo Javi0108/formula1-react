@@ -62,6 +62,7 @@ const Driver: React.FC = () => {
               </div>
               <img
                 id="helmetImg"
+                className="d-none d-md-block"
                 src={`/pilots/helmets/${driver.Driver.driverId}.webp`}
               />
               <ul id="infoList">
@@ -111,6 +112,7 @@ const Driver: React.FC = () => {
           {/* <div id="rightContainer"> */}
             <CarViewer
               modelPath={`/3d-Objects/${driver.Constructors[0].constructorId}.glb`}
+              driverId={driver.Driver.driverId}
             />
           {/* </div> */}
         </div>
