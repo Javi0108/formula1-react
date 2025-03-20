@@ -50,7 +50,7 @@ const RaceResults: React.FC<RaceResultsProps> = ({
         {/* <h4 id="resultTitleContainer">RESULTS IN 2024</h4> */}
         <div id="drivers">
           {drivers.map((driver) => (
-            <div className="col-6">
+            <div key={driver.Driver.code} className="col-6">
               <Link to={`/driver/${driver.Driver.driverId}`} className="card">
                 {parseInt(driver.position) === 1 ? (
                   <span id="positionFirst">{driver.position}</span>

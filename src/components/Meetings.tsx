@@ -154,7 +154,7 @@ const Meetings: React.FC = () => {
           onChange={handleChange}
           value={circuit_id}
         >
-          <option value="0" selected>
+          <option value="0">
             Select a circuit
           </option>
           {meetings.map((meeting) => (
@@ -172,7 +172,7 @@ const Meetings: React.FC = () => {
             width={window.visualViewport?.width}
             height={window.visualViewport?.height}
             ref={globeEl}
-            globeImageUrl="//unpkg.com/three-globe/example/img/earth-dark.jpg"
+            globeImageUrl="//cdn.jsdelivr.net/npm/three-globe/example/img/earth-dark.jpg"
             onGlobeReady={() =>
               globeEl.current.pointOfView({
                 lng: longitude,
